@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.txbFrom = new System.Windows.Forms.TextBox();
             this.txbTo = new System.Windows.Forms.TextBox();
@@ -129,6 +130,7 @@
             this.Controls.Add(this.txbTo);
             this.Controls.Add(this.txbFrom);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Copy Files";
