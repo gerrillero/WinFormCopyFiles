@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace WinFormCopyFiles
 {
@@ -132,16 +133,22 @@ namespace WinFormCopyFiles
         /// </summary>
         public static void DeleteFoldersIfEmpty(DirectoryInfo tree)
         {
-            foreach (DirectoryInfo di in tree.EnumerateDirectories())
+            try
             {
-                DeleteFoldersIfEmpty(di);
+                foreach (DirectoryInfo di in tree.EnumerateDirectories())
+                {
+                    DeleteFoldersIfEmpty(di);
+                }
+                tree.Refresh();
+                if (!tree.EnumerateFiles().Any())
+                {
+                    tree.Delete();
+                }
             }
-            tree.Refresh();
-            if (!tree.EnumerateFiles().Any())
+            catch (Exception ex)
             {
-                tree.Delete();
+                //MessageBox.Show(ex.Message);
             }
-            return;
         }
 
     }
