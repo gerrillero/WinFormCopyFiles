@@ -1,6 +1,6 @@
 ﻿namespace WinFormCopyFiles
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.txbFrom = new System.Windows.Forms.TextBox();
             this.txbTo = new System.Windows.Forms.TextBox();
@@ -40,6 +40,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpModified = new System.Windows.Forms.DateTimePicker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dtpModifiedTime = new System.Windows.Forms.DateTimePicker();
+            this.btnFromDialog = new System.Windows.Forms.Button();
+            this.btnToDialog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +50,7 @@
             // 
             this.txbFrom.Location = new System.Drawing.Point(57, 50);
             this.txbFrom.Name = "txbFrom";
-            this.txbFrom.Size = new System.Drawing.Size(364, 20);
+            this.txbFrom.Size = new System.Drawing.Size(340, 20);
             this.txbFrom.TabIndex = 0;
             this.txbFrom.Click += new System.EventHandler(this.txbFrom_Click);
             // 
@@ -55,7 +58,7 @@
             // 
             this.txbTo.Location = new System.Drawing.Point(57, 82);
             this.txbTo.Name = "txbTo";
-            this.txbTo.Size = new System.Drawing.Size(364, 20);
+            this.txbTo.Size = new System.Drawing.Size(340, 20);
             this.txbTo.TabIndex = 1;
             this.txbTo.Click += new System.EventHandler(this.txbTo_Click);
             // 
@@ -107,20 +110,55 @@
             // 
             // dtpModified
             // 
+            this.dtpModified.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpModified.Location = new System.Drawing.Point(221, 123);
             this.dtpModified.Name = "dtpModified";
-            this.dtpModified.Size = new System.Drawing.Size(200, 20);
+            this.dtpModified.Size = new System.Drawing.Size(121, 20);
             this.dtpModified.TabIndex = 16;
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // Form1
+            // dtpModifiedTime
+            // 
+            this.dtpModifiedTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpModifiedTime.Location = new System.Drawing.Point(348, 123);
+            this.dtpModifiedTime.Name = "dtpModifiedTime";
+            this.dtpModifiedTime.ShowUpDown = true;
+            this.dtpModifiedTime.Size = new System.Drawing.Size(73, 20);
+            this.dtpModifiedTime.TabIndex = 17;
+            // 
+            // btnFromDialog
+            // 
+            this.btnFromDialog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFromDialog.Location = new System.Drawing.Point(397, 50);
+            this.btnFromDialog.Name = "btnFromDialog";
+            this.btnFromDialog.Size = new System.Drawing.Size(24, 20);
+            this.btnFromDialog.TabIndex = 18;
+            this.btnFromDialog.Text = "...";
+            this.btnFromDialog.UseVisualStyleBackColor = true;
+            this.btnFromDialog.Click += new System.EventHandler(this.btnFromDialog_Click);
+            // 
+            // btnToDialog
+            // 
+            this.btnToDialog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToDialog.Location = new System.Drawing.Point(397, 82);
+            this.btnToDialog.Name = "btnToDialog";
+            this.btnToDialog.Size = new System.Drawing.Size(24, 20);
+            this.btnToDialog.TabIndex = 19;
+            this.btnToDialog.Text = "...";
+            this.btnToDialog.UseVisualStyleBackColor = true;
+            this.btnToDialog.Click += new System.EventHandler(this.btnToDialog_Click);
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 243);
+            this.Controls.Add(this.btnToDialog);
+            this.Controls.Add(this.btnFromDialog);
+            this.Controls.Add(this.dtpModifiedTime);
             this.Controls.Add(this.dtpModified);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -132,7 +170,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Copy Files";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -152,6 +190,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpModified;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.DateTimePicker dtpModifiedTime;
+        private System.Windows.Forms.Button btnToDialog;
+        private System.Windows.Forms.Button btnFromDialog;
     }
 }
 

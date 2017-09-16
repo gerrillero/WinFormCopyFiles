@@ -4,40 +4,57 @@ using System.Windows.Forms;
 
 namespace WinFormCopyFiles
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
+
+            txbFrom.Text = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            txbTo.Text = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         }
 
         private void txbFrom_Click(object sender, EventArgs e)
         {
-            ChooseFolder(sender as TextBox);
+            //ChooseFolder(sender as TextBox);
         }
 
         private void txbTo_Click(object sender, EventArgs e)
         {
-            ChooseFolder(sender as TextBox);
+            //ChooseFolder(sender as TextBox);
         }
 
 
-        private void ChooseFolder(TextBox sender)
+        private void ChooseFolder(Button sender)
         {
             DialogResult result = folderBrowserDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
                 String path = folderBrowserDialog1.SelectedPath;
-                sender.Text = path;
+                if (sender.Name == btnFromDialog.Name)
+                    txbFrom.Text = path;
+                else if (sender.Name == btnToDialog.Name)
+                    txbTo.Text = path;
+
             }
         }
+
+        //private void ChooseFolder(TextBox sender)
+        //{
+        //    DialogResult result = folderBrowserDialog1.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        String path = folderBrowserDialog1.SelectedPath;
+        //        sender.Text = path;
+        //    }
+        //}
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
             String origPath = txbFrom.Text;
             String desPath = txbTo.Text;
 
-            DateTime modifiedDate = dtpModified.Value;
+            DateTime modifiedDate = dtpModified.Value.Date + dtpModifiedTime.Value.TimeOfDay;
 
             if (String.IsNullOrEmpty(origPath))
                 errorProvider1.SetError(txbFrom, "Choose the directory to cope files");
@@ -56,6 +73,16 @@ namespace WinFormCopyFiles
                 FilesHelper.DeleteFoldersIfEmpty(dir);
                 MessageBox.Show("Completed!");
             }
+        }
+
+        private void btnFromDialog_Click(object sender, EventArgs e)
+        {
+            ChooseFolder(sender as Button);
+        }
+
+        private void btnToDialog_Click(object sender, EventArgs e)
+        {
+            ChooseFolder(sender as Button);
         }
     }
 }
